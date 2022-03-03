@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./rightSide.component.scss'],
 })
 export class rightSide {
-  loadedPage: number = 2;
+  loadedPage: number = 1;
   constructor() {}
 }

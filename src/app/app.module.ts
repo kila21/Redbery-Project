@@ -9,12 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { layoutComponent } from './layout/main/layout.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-    layoutComponent,
-    aboutyouComponent,
-  ],
+  declarations: [AppComponent, HomepageComponent, aboutyouComponent],
   imports: [BrowserModule, AppRoutingModule, layoutModule],
   providers: [],
   bootstrap: [AppComponent],

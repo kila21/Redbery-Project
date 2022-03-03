@@ -1,6 +1,17 @@
 <div class="layout-container">
-  <div>
+  <div class="half">
     <router-outlet></router-outlet>
+    <div class="slider">
+      <div class="left"></div>
+      <div routerLink="/aboutyou" class="circle active"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="right"></div>
+    </div>
   </div>
-  <div><layout-rightSide></layout-rightSide></div>
+  <div class="half">
+    <layout-rightSide></layout-rightSide>
+  </div>
 </div>
