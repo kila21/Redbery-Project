@@ -12,6 +12,6 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {}
 
   startQuestionnaire(): void {
-    this.router.navigate(['aboutyou']);
+    this.router.navigate(['quiz']);
   }
 }

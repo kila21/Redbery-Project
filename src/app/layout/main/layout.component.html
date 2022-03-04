@@ -2,13 +2,19 @@
   <div class="half">
     <router-outlet></router-outlet>
     <div class="slider">
-      <div class="left"></div>
-      <div routerLink="/aboutyou" class="circle active"></div>
+      <img
+        class="previous"
+        src="../../../assets/images/Previous.svg"
+        alt="previous"
+      />
+
+      <div routerLink="/personal" class="circle active"></div>
+      <div routerLink="/skills" class="circle"></div>
       <div class="circle"></div>
       <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="right"></div>
+      <div routerLink="/insights" class="circle active"></div>
+
+      <img src="../../../assets/images/Next.svg" alt="next" />
     </div>
   </div>
   <div class="half">
