@@ -1,14 +1,8 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { async } from 'rxjs';
-import { SkillsService } from './skills.service';
-import { skill } from './skills.service';
 
-interface newSkill {
-  skill: string;
-  yearOfExperience: string;
-}
+import { SkillsService } from './skills.service';
+import { skill, newSkill } from './skills.service';
 
 @Component({
   selector: 'app-skills',
@@ -17,7 +11,6 @@ interface newSkill {
 })
 export class skillsComponent implements OnInit {
   skills: skill[] = [];
-
   newSkillsArray: newSkill[] = [];
 
   form = this.fb.group({
@@ -29,15 +22,36 @@ export class skillsComponent implements OnInit {
   ngOnInit() {
     this.skillsService.getSkills().subscribe((res: skill[]) => {
       this.skills = res;
-      console.log(res);
     });
   }
 
+  remove(skill: string) {
+    // console.log(skill);
+    this.skillsService.removeSkill(skill);
+    this.newSkillsArray = this.skillsService.newSkillsArray;
+    console.log(this.newSkillsArray);
+  }
+
   onSubmit() {
-    console.log(this.form.value);
+    // tu carieli stringia html atans tuarada values
+
+    for (let x of this.newSkillsArray) {
+      if (this.form.get('skill')?.value === x.skill) {
+        alert('this skill is already added');
+        return;
+      }
+    }
+
     this.newSkillsArray.push({
-      skill: this.form.get('skill')?.value,
+      skill:
+        this.form.get('skill')?.value === ''
+          ? 'HTML'
+          : this.form.get('skill')?.value,
+      // skill: this.selected,
       yearOfExperience: this.form.get('yearOfExperience')?.value,
     });
+
+    this.skillsService.newSkillsArray = this.newSkillsArray;
+    this.form.get('yearOfExperience')?.reset();
   }
 }

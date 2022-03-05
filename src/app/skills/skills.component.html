@@ -12,14 +12,21 @@
       type="number"
       placeholder="Experience Duration in Years"
     />
-    <button type="submit" class="button">Add Programming Language</button>
+    <button type="button" (click)="onSubmit()" class="button">
+      Add Programming Language
+    </button>
   </form>
 
   <div *ngIf="newSkillsArray.length > 0" class="skills-container">
     <div *ngFor="let newSkill of newSkillsArray" class="new-skills">
       <span>{{ newSkill.skill }}</span>
       <span>Years of Experience: {{ newSkill.yearOfExperience }}</span>
-      <span><img src="../../assets/images/Remove.svg" alt="remove" /></span>
+      <span
+        ><img
+          (click)="remove(newSkill.skill)"
+          src="../../assets/images/Remove.svg"
+          alt="remove"
+      /></span>
     </div>
   </div>
 </div>

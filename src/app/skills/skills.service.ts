@@ -7,12 +7,19 @@ export interface skill {
   title: string;
 }
 
+// user new skills interface
+export interface newSkill {
+  skill: string;
+  yearOfExperience: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class SkillsService {
   private skills: skill[] | undefined;
-  public newSkillForUser = [];
+
+  newSkillsArray: newSkill[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -21,5 +28,18 @@ export class SkillsService {
   getSkills(): Observable<any> {
     return this.http.get(this.url);
     // return this.skills;
+  }
+
+  getNewSkillsForTemplate(): newSkill[] {
+    return this.newSkillsArray;
+  }
+
+  removeSkill(name: string) {
+    this.newSkillsArray.forEach((s, i) => {
+      if (s.skill === name) {
+        this.newSkillsArray.splice(i, 1);
+        
+      }
+    });
   }
 }
