@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CovidComponent } from '../covid/covid.component';
 
 import { insightsComponent } from '../insights/insights.component';
 import { personalComponent } from '../personal/personal.component';
@@ -15,12 +16,13 @@ const routes: Routes = [
     component: layoutComponent,
     children: [
       { path: '', redirectTo: 'personal', pathMatch: 'full' },
+      { path: 'personal', component: personalComponent },
+      { path: 'skills', component: skillsComponent },
+      { path: 'covid', component: CovidComponent },
       {
         path: 'insights',
         component: insightsComponent,
       },
-      { path: 'personal', component: personalComponent },
-      { path: 'skills', component: skillsComponent },
     ],
   },
 ];

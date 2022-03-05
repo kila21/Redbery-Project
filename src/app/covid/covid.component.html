@@ -1,0 +1,103 @@
+<div class="container">
+  <h2 class="title">Covid Stuff</h2>
+  <form [formGroup]="formCovid" class="form">
+    <div class="form-content">
+      <h4>how would you prefer to work?</h4>
+      <div class="radio-buttons">
+        <input
+          formControlName="work"
+          value="From Sairme Office"
+          type="radio"
+          name="work"
+        />
+        <label>From Sairme Office</label>
+      </div>
+      <div class="radio-buttons">
+        <input
+          formControlName="work"
+          value="From Home"
+          type="radio"
+          name="work"
+        />
+        <label>From Home</label>
+      </div>
+      <div class="radio-buttons">
+        <input formControlName="work" value="Hybrid" type="radio" name="work" />
+        <label>Hybrid</label>
+      </div>
+    </div>
+
+    <div class="form-content">
+      <h4>Did you contact covid 19? :(</h4>
+      <div class="radio-buttons">
+        <input
+          type="radio"
+          value="Yes"
+          formControlName="contact"
+          name="contact"
+        />
+        <label>Yes</label>
+      </div>
+
+      <div class="radio-buttons">
+        <input
+          formControlName="contact"
+          value="No"
+          type="radio"
+          name="contact"
+        />
+        <label>No</label>
+      </div>
+    </div>
+
+    <div
+      *ngIf="this.formCovid.get('contact')?.value === 'Yes'"
+      class="form-content"
+    >
+      <h4>When?</h4>
+      <input
+        formControlName="contactWhen"
+        class="date"
+        type="date"
+        placeholder="Date"
+      />
+    </div>
+
+    <div class="form-content">
+      <h4>Have you been vaccinated?</h4>
+      <div class="radio-buttons">
+        <input
+          value="Yes"
+          type="radio"
+          formControlName="vaccinated"
+          name="vaccinated"
+        />
+        <label>Yes</label>
+      </div>
+
+      <div class="radio-buttons">
+        <input
+          value="No"
+          type="radio"
+          formControlName="vaccinated"
+          name="vaccinated"
+        />
+        <label>No</label>
+      </div>
+    </div>
+
+    <div
+      *ngIf="this.formCovid.get('vaccinated')?.value === 'Yes'"
+      class="form-content"
+    >
+      <h4>When did you get your last covid vaccine?</h4>
+      <input
+        formControlName="lastVaccine"
+        class="date"
+        type="date"
+        placeholder="Date"
+      />
+    </div>
+  </form>
+  <button (click)="submit()">submit</button>
+</div>

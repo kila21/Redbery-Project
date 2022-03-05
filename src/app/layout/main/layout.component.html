@@ -8,11 +8,32 @@
         alt="previous"
       />
 
-      <div routerLink="/personal" class="circle active"></div>
-      <div routerLink="/skills" class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div routerLink="/insights" class="circle active"></div>
+      <div
+        #div
+        (click)="page(div)"
+        routerLink="/quiz/personal"
+        class="circle active"
+      ></div>
+      <div
+        (click)="page(div)"
+        routerLink="/quiz/skills"
+        class="circle active"
+      ></div>
+      <div
+        (click)="page(div)"
+        routerLink="/quiz/covid"
+        class="circle active"
+      ></div>
+      <div
+        (click)="page(div)"
+        routerLink="/quiz/insights"
+        class="circle active"
+      ></div>
+      <div
+        (click)="page(div)"
+        routerLink="/quiz/submit"
+        class="circle active"
+      ></div>
 
       <img src="../../../assets/images/Next.svg" alt="next" />
     </div>

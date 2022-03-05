@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { layoutService } from '../layout.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss'],
 })
 export class layoutComponent {
+  constructor(private layoutService: layoutService) {}
 
-  constructor() {}
+  page(div: HTMLDivElement) {}
 }

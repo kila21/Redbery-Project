@@ -8,9 +8,15 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { skillsComponent } from './skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CovidComponent } from './covid/covid.component';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, skillsComponent],
+  declarations: [
+    AppComponent,
+    HomepageComponent,
+    skillsComponent,
+    CovidComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
