@@ -9,5 +9,7 @@ import { layoutService } from '../layout.service';
 export class layoutComponent {
   constructor(private layoutService: layoutService) {}
 
-  page(div: HTMLDivElement) {}
+  page(page: number) {
+    this.layoutService.loadedPage = page;
+  }
 }
