@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { skillsComponent } from './skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovidComponent } from './covid/covid.component';
+import { personalComponent } from './personal/personal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CovidComponent } from './covid/covid.component';
     HomepageComponent,
     skillsComponent,
     CovidComponent,
+    personalComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,13 @@
       margin-right: 15px;
       &.active {
         background-color: red;
+        opacity: 1;
+      }
+      &.light {
+        background: #fe3b1f;
+        opacity: 0.1;
       }
     }
   }
 }
+

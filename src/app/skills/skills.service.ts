@@ -17,6 +17,11 @@ export interface newSkill {
   providedIn: 'root',
 })
 export class SkillsService {
+  //clicked next page or not
+  clicked: Boolean = false;
+  skillsFormValid: boolean = false;
+  skillsForm = [];
+
   private skills: skill[] | undefined;
 
   newSkillsArray: newSkill[] = [];
@@ -30,15 +35,10 @@ export class SkillsService {
     // return this.skills;
   }
 
-  getNewSkillsForTemplate(): newSkill[] {
-    return this.newSkillsArray;
-  }
-
   removeSkill(name: string) {
     this.newSkillsArray.forEach((s, i) => {
       if (s.skill === name) {
         this.newSkillsArray.splice(i, 1);
-        
       }
     });
   }

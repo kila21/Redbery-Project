@@ -10,33 +10,24 @@
 
       <div
         id="page1"
-        (click)="page(1)"
+        #div1
+        (click)="page(1, div1)"
         routerLink="/quiz/personal"
         class="circle active"
       ></div>
+
+      <div id="page2" #div2 (click)="page(2, div2)" class="circle light"></div>
+
+      <div #div3 id="page3" (click)="page(3, div3)" class="circle light"></div>
+
+      <div #div4 id="page4" (click)="page(4, div4)" class="circle light"></div>
+
       <div
-        id="page2"
-        (click)="page(2)"
-        routerLink="/quiz/skills"
-        class="circle active"
-      ></div>
-      <div
-        id="page3"
-        (click)="page(3)"
-        routerLink="/quiz/covid"
-        class="circle active"
-      ></div>
-      <div
-        id="page4"
-        (click)="page(4)"
-        routerLink="/quiz/insights"
-        class="circle active"
-      ></div>
-      <div
+        #div5
         id="page5"
-        (click)="page(5)"
+        (click)="page(5, div5)"
         routerLink="/quiz/submit"
-        class="circle active"
+        class="circle light"
       ></div>
 
       <img src="../../../assets/images/Next.svg" alt="next" />

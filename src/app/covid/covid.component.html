@@ -25,6 +25,12 @@
         <input formControlName="work" value="Hybrid" type="radio" name="work" />
         <label>Hybrid</label>
       </div>
+
+      <span
+        *ngIf="formCovid.controls['work'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
     </div>
 
     <div class="form-content">
@@ -48,6 +54,13 @@
         />
         <label>No</label>
       </div>
+
+      <!--error-->
+      <span
+        *ngIf="formCovid.controls['contact'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
     </div>
 
     <div
@@ -61,6 +74,12 @@
         type="date"
         placeholder="Date"
       />
+
+      <span
+        *ngIf="formCovid.controls['contactWhen'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
     </div>
 
     <div class="form-content">
@@ -84,6 +103,12 @@
         />
         <label>No</label>
       </div>
+
+      <span
+        *ngIf="formCovid.controls['vaccinated'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
     </div>
 
     <div
@@ -97,7 +122,12 @@
         type="date"
         placeholder="Date"
       />
+
+      <span
+        *ngIf="formCovid.controls['lastVaccine'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
     </div>
   </form>
-  <button (click)="submit()">submit</button>
 </div>

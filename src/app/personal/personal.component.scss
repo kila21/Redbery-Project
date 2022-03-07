@@ -20,23 +20,34 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    input {
-      width: 455px;
-      height: 54px;
-      border: 1px solid #525557;
+    .input-div {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 37px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 17px;
-      &::placeholder {
-        font-family: $monseratiRegular;
-        font-style: italic;
-        font-weight: normal;
+
+      input {
+        width: 455px;
+        height: 54px;
+        border: 1px solid #525557;
+
+        text-align: center;
         font-size: 14px;
         line-height: 17px;
-        padding-left: 57px;
-        text-align: left;
+        &::placeholder {
+          font-family: $monseratiRegular;
+          font-style: italic;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 17px;
+          padding-left: 57px;
+          text-align: left;
+        }
       }
     }
   }
+}
+.error {
+  width: 455px;
+  color: red;
+  text-align: left;
 }
