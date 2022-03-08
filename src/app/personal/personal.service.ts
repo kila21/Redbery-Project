@@ -13,4 +13,8 @@ export class PersonalService {
   personalForm = [];
 
   constructor() {}
+
+  getLocalStorage(): string | null {
+    return localStorage.getItem('formPersonal');
+  }
 }

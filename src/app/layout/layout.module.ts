@@ -6,7 +6,6 @@ import { CovidComponent } from '../covid/covid.component';
 import { insightsComponent } from '../insights/insights.component';
 import { personalComponent } from '../personal/personal.component';
 import { skillsComponent } from '../skills/skills.component';
-
 import { layoutComponent } from './main/layout.component';
 import { rightSide } from './rightSide/rightSide.component';
 

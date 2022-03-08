@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PersonalService } from '../personal/personal.service';
 
@@ -10,12 +10,14 @@ import { skill, newSkill } from './skills.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss'],
 })
-export class skillsComponent implements OnInit, DoCheck {
+export class skillsComponent implements OnInit, DoCheck, OnDestroy {
   skills: skill[] = [];
   newSkillsArray: newSkill[] = [];
 
+  localStorageForm: any = 'null';
+
   form = this.fb.group({
-    skill: new FormControl(''),
+    skill: new FormControl('HTML'),
     yearOfExperience: new FormControl('', [Validators.required]),
   });
   constructor(private skillsService: SkillsService, public fb: FormBuilder) {}
@@ -24,6 +26,17 @@ export class skillsComponent implements OnInit, DoCheck {
     this.skillsService.getSkills().subscribe((res: skill[]) => {
       this.skills = res;
     });
+
+    this.localStorageForm = this.skillsService.getLocalStorage()
+      ? this.skillsService.getLocalStorage()
+      : 'null';
+    this.localStorageForm = JSON.parse(this.localStorageForm);
+
+    if (localStorage.getItem('skillsForm') !== null) {
+      // console.log(this.localStorageForm.first);
+      console.log(this.localStorageForm);
+      this.newSkillsArray = this.localStorageForm;
+    }
   }
 
   ngDoCheck(): void {
@@ -34,11 +47,17 @@ export class skillsComponent implements OnInit, DoCheck {
     }
   }
 
+  ngOnDestroy(): void {
+    console.log('skills Form....');
+    console.log(this.skillsService.newSkillsArray);
+
+    localStorage.setItem('skillsForm', JSON.stringify(this.newSkillsArray));
+  }
+
   remove(skill: string) {
     // console.log(skill);
     this.skillsService.removeSkill(skill);
     this.newSkillsArray = this.skillsService.newSkillsArray;
-    console.log(this.newSkillsArray);
   }
 
   onSubmit() {
@@ -51,7 +70,7 @@ export class skillsComponent implements OnInit, DoCheck {
       }
     }
     if (this.form.get('yearOfExperience')?.valid) {
-      this.newSkillsArray.push({
+      this.skillsService.newSkillsArray.push({
         skill:
           this.form.get('skill')?.value === ''
             ? 'HTML'
@@ -61,7 +80,8 @@ export class skillsComponent implements OnInit, DoCheck {
       });
     }
 
-    this.skillsService.newSkillsArray = this.newSkillsArray;
+    // this.skillsService.newSkillsArray = this.newSkillsArray;
+    this.newSkillsArray = this.skillsService.newSkillsArray;
     this.form.get('yearOfExperience')?.reset();
   }
 }

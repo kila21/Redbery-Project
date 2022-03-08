@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class CovidService {
-  //page clicked
+export class InsightsService {
   clicked: boolean = false;
-  covidFormValid: boolean = false;
 
-  covidFormValue = [];
+  formInsightsValid: boolean = false;
+  formInsightsValue = [];
 
   getLocalStorage(): string | null {
-    return localStorage.getItem('formCovid');
+    return localStorage.getItem('formInsights');
   }
 }

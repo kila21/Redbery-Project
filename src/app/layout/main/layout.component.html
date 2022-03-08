@@ -6,6 +6,7 @@
         class="previous"
         src="../../../assets/images/Previous.svg"
         alt="previous"
+        (click)="onPrevious()"
       />
 
       <div
@@ -16,21 +17,37 @@
         class="circle active"
       ></div>
 
-      <div id="page2" #div2 (click)="page(2, div2)" class="circle light"></div>
+      <div #div2 id="page2" (click)="page(2, div2)" class="circle"></div>
 
-      <div #div3 id="page3" (click)="page(3, div3)" class="circle light"></div>
+      <div
+        #div3
+        id="page3"
+        routerLinkActive="active"
+        (click)="page(3, div3)"
+        class="circle light"
+      ></div>
 
-      <div #div4 id="page4" (click)="page(4, div4)" class="circle light"></div>
+      <div
+        #div4
+        id="page4"
+        routerLinkActive="active"
+        (click)="page(4, div4)"
+        class="circle light"
+      ></div>
 
       <div
         #div5
         id="page5"
         (click)="page(5, div5)"
-        routerLink="/quiz/submit"
+        routerLink="/submit"
         class="circle light"
       ></div>
 
-      <img src="../../../assets/images/Next.svg" alt="next" />
+      <img
+        src="../../../assets/images/Next.svg"
+        alt="next"
+        (click)="onNext()"
+      />
     </div>
   </div>
   <div class="half">

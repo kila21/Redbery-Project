@@ -2,6 +2,7 @@ import {
   Component,
   DoCheck,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
@@ -21,7 +22,8 @@ export interface covidFormSubmit {
   templateUrl: './covid.component.html',
   styleUrls: ['./covid.component.scss'],
 })
-export class CovidComponent implements OnInit, DoCheck {
+export class CovidComponent implements DoCheck, OnDestroy, OnInit {
+  private localStorageForm:any = 'null'
   constructor(private fb: FormBuilder, private covidService: CovidService) {}
   public formCovid = this.fb.group({
     work: new FormControl('', [Validators.required]),
@@ -30,8 +32,35 @@ export class CovidComponent implements OnInit, DoCheck {
     vaccinated: new FormControl('', [Validators.required]),
     lastVaccine: new FormControl('', [Validators.required]),
   });
+  ngOnInit(): void {
+    // localstorage data for insight component fields
+    this.localStorageForm = this.covidService.getLocalStorage()
+      ? this.covidService.getLocalStorage()
+      : 'null';
+    this.localStorageForm = JSON.parse(this.localStorageForm);
 
-  ngOnInit(): void {}
+    // store value
+    if (localStorage.getItem('formCovid') !== null) {
+      this.formCovid.patchValue({
+        work: this.localStorageForm.work,
+        contact: this.localStorageForm.contact,
+        contactWhen: this.localStorageForm.contactWhen,
+        vaccinated: this.localStorageForm.vaccinated,
+        lastVaccine: this.localStorageForm.lastVaccine
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.formCovid.valid) {
+      this.covidService.covidFormValue = this.formCovid.value;
+    }
+    console.log('covid Form....');
+    console.log(this.covidService.covidFormValue);
+
+    localStorage.setItem('formCovid', JSON.stringify(this.formCovid.value));
+  }
+
   ngDoCheck(): void {
     //tu chans date inputebi validatorebs amagrebs tuarada ushlis
     if (this.formCovid.get('contact')?.value === 'No') {

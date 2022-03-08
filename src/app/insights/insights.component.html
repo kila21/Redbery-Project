@@ -1,0 +1,55 @@
+<div class="container">
+  <h2 class="title">What about you?</h2>
+  <form [formGroup]="formInsights" class="form">
+    <div class="form-content">
+      <h4>Would you attend Devtalks and maybe also organize your own?</h4>
+      <div class="radio-buttons">
+        <input
+          formControlName="devTalk"
+          type="radio"
+          name="devTalk"
+          value="Yes"
+        />
+        <label>Yes</label>
+      </div>
+      <div class="radio-buttons">
+        <input
+          formControlName="devTalk"
+          type="radio"
+          name="devTalk"
+          value="No"
+        />
+        <label>No</label>
+      </div>
+      <span
+        *ngIf="formInsights.controls['devTalk'].errors?.['required']"
+        class="error"
+      >
+        * Field is required</span
+      >
+    </div>
+
+    <div
+      *ngIf="formInsights.controls['devTalk'].value === 'Yes'"
+      class="form-content"
+    >
+      <h4>What would you speak about at Devtalk?</h4>
+      <textarea formControlName="devTalkSpeak"></textarea>
+      <span
+        *ngIf="formInsights.controls['devTalkSpeak'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
+    </div>
+
+    <div class="form-content">
+      <h4>Tell us something special</h4>
+      <textarea formControlName="special"></textarea>
+      <span
+        *ngIf="formInsights.controls['special'].errors?.['required']"
+        class="error"
+        >* Field is required</span
+      >
+    </div>
+  </form>
+</div>

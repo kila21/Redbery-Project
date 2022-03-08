@@ -11,6 +11,7 @@
     align-items: center;
     .previous {
       margin-right: 15px;
+      cursor: pointer;
     }
     .circle {
       width: 19px;
@@ -29,3 +30,6 @@
   }
 }
 
+.next {
+  cursor: pointer;
+}

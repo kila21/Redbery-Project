@@ -10,6 +10,7 @@ import { skillsComponent } from './skills/skills.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovidComponent } from './covid/covid.component';
 import { personalComponent } from './personal/personal.component';
+import { insightsComponent } from './insights/insights.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { personalComponent } from './personal/personal.component';
     skillsComponent,
     CovidComponent,
     personalComponent,
+    insightsComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,9 +20,6 @@ export class SkillsService {
   //clicked next page or not
   clicked: Boolean = false;
   skillsFormValid: boolean = false;
-  skillsForm = [];
-
-  private skills: skill[] | undefined;
 
   newSkillsArray: newSkill[] = [];
 
@@ -30,16 +27,22 @@ export class SkillsService {
 
   url: string = 'https://bootcamp-2022.devtest.ge/api/skills';
 
+  //get skills from api
   getSkills(): Observable<any> {
     return this.http.get(this.url);
     // return this.skills;
   }
 
+  //remove user skill
   removeSkill(name: string) {
     this.newSkillsArray.forEach((s, i) => {
       if (s.skill === name) {
         this.newSkillsArray.splice(i, 1);
       }
     });
+  }
+
+  getLocalStorage() : string| null{
+    return localStorage.getItem('skillsForm')
   }
 }

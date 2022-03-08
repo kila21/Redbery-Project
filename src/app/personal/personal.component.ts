@@ -1,3 +1,4 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PersonalService } from './personal.service';
@@ -10,6 +11,7 @@ import { PersonalService } from './personal.service';
 export class personalComponent implements OnInit, OnDestroy, DoCheck {
   //regex for phone
   phoneRegex = new RegExp('^[+][9]{2}[5]{3}[0-9]{7}$');
+  private localStorageForm: any = '';
 
   formPersonal = this.fb.group({
     first: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -23,7 +25,22 @@ export class personalComponent implements OnInit, OnDestroy, DoCheck {
     private personalService: PersonalService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.localStorageForm = this.personalService.getLocalStorage()
+      ? this.personalService.getLocalStorage()
+      : 'null';
+    this.localStorageForm = JSON.parse(this.localStorageForm);
+
+    if (localStorage.getItem('formPersonal') !== null) {
+      // console.log(this.localStorageForm.first);
+      this.formPersonal.patchValue({
+        first: this.localStorageForm.first,
+        last: this.localStorageForm.last,
+        email: this.localStorageForm.email,
+        phone: this.localStorageForm.phone,
+      });
+    }
+  }
 
   ngDoCheck(): void {
     if (this.formPersonal.valid) {
@@ -35,6 +52,14 @@ export class personalComponent implements OnInit, OnDestroy, DoCheck {
     if (this.personalService.clicked && this.formPersonal.valid) {
       this.personalService.personalForm = this.formPersonal.value;
     }
+
+    console.log('Personal Form....');
+    console.log(this.personalService.personalForm);
+
+    localStorage.setItem(
+      'formPersonal',
+      JSON.stringify(this.formPersonal.value)
+    );
   }
 
   onSubmit() {
