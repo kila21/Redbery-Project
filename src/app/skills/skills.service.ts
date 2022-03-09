@@ -13,7 +13,7 @@ export interface newSkill {
   yearOfExperience: string;
 }
 
-interface skillsSubmitArray {
+export interface skillsSubmitArray {
   id: number;
   experience: number;
 }

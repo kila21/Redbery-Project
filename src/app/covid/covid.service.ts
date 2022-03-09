@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
 
+export interface CovidFormInterface {
+  work: string;
+  contact: string;
+  contactWhen?: string;
+  vaccinated: string;
+  lastVaccine?: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -8,7 +15,7 @@ export class CovidService {
   clicked: boolean = false;
   covidFormValid: boolean = false;
 
-  covidFormValue = [];
+  covidFormValue: CovidFormInterface;
 
   getLocalStorage(): string | null {
     return localStorage.getItem('formCovid');

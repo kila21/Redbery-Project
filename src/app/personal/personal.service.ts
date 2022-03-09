@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
 
+export interface personalInterface {
+  first: string;
+  last: string;
+  email: string;
+  phone?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +17,7 @@ export class PersonalService {
   // it means next page was clicked
   clicked: boolean = false;
   //personal page form value
-  personalForm = [];
+  personalForm: personalInterface;
 
   constructor() {}
 

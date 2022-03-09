@@ -15,6 +15,6 @@ export class SubmitComponent {
   }
 
   onSubmitForms() {
-    this.submit.getPersonalForm();
+    this.submit.postData();
   }
 }
