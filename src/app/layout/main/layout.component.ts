@@ -47,7 +47,8 @@ export class layoutComponent {
           this.router.navigate(['quiz/covid']);
         }
         break;
-      case '/quiz/skills':
+      case '/quiz/covid':
+       
         if (this.covidService.covidFormValid) {
           this.router.navigate(['quiz/insights']);
         }

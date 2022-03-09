@@ -23,7 +23,7 @@ export interface covidFormSubmit {
   styleUrls: ['./covid.component.scss'],
 })
 export class CovidComponent implements DoCheck, OnDestroy, OnInit {
-  private localStorageForm:any = 'null'
+  private localStorageForm: any = 'null';
   constructor(private fb: FormBuilder, private covidService: CovidService) {}
   public formCovid = this.fb.group({
     work: new FormControl('', [Validators.required]),
@@ -46,7 +46,7 @@ export class CovidComponent implements DoCheck, OnDestroy, OnInit {
         contact: this.localStorageForm.contact,
         contactWhen: this.localStorageForm.contactWhen,
         vaccinated: this.localStorageForm.vaccinated,
-        lastVaccine: this.localStorageForm.lastVaccine
+        lastVaccine: this.localStorageForm.lastVaccine,
       });
     }
   }
@@ -55,8 +55,6 @@ export class CovidComponent implements DoCheck, OnDestroy, OnInit {
     if (this.formCovid.valid) {
       this.covidService.covidFormValue = this.formCovid.value;
     }
-    console.log('covid Form....');
-    console.log(this.covidService.covidFormValue);
 
     localStorage.setItem('formCovid', JSON.stringify(this.formCovid.value));
   }
@@ -85,7 +83,6 @@ export class CovidComponent implements DoCheck, OnDestroy, OnInit {
 
     // formis values shenaxva servisshi
     if (this.formCovid.valid && this.covidService.clicked) {
-      console.log(this.covidService.covidFormValue);
       this.covidService.covidFormValue = this.formCovid.value;
     }
   }
