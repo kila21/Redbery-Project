@@ -13,6 +13,7 @@ import { personalComponent } from './personal/personal.component';
 import { insightsComponent } from './insights/insights.component';
 import { SubmitComponent } from './submit/submit.component';
 import { ThanksComponent } from './thanks/thanks.component';
+import { ApplicationsComponent } from './applications/applications.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ThanksComponent } from './thanks/thanks.component';
     personalComponent,
     insightsComponent,
     SubmitComponent,
-    ThanksComponent
+    ThanksComponent,
+    ApplicationsComponent,
   ],
   imports: [
     BrowserModule,

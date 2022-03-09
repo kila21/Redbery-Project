@@ -1,0 +1,177 @@
+<div class="body">
+  <div class="container">
+    <h1>Submitted Applications</h1>
+    <div
+      #div
+      (click)="onClick(div, i)"
+      *ngFor="let app of data; index as i"
+      class="apps-container"
+    >
+      <span class="count">{{ i + 1 }}</span>
+      <span class="img count">></span>
+      <div *ngIf="clicked[i]" class="forms">
+        <div class="top">
+          <div class="personal">
+            <h3 class="title">Personal Information</h3>
+            <div class="content">
+              <span>First Name</span>
+              <span>{{ app.first_name }}</span>
+            </div>
+            <div class="content">
+              <span>Last Name</span>
+              <span>{{ app.last_name }}</span>
+            </div>
+            <div class="content">
+              <span>E-mail</span>
+              <span>{{ app.email }}</span>
+            </div>
+            <div class="content">
+              <span>phone</span>
+              <span>{{ app.phone }}</span>
+            </div>
+          </div>
+          <div class="skills">
+            <h3 class="title">Skillset</h3>
+            <div *ngFor="let skill of app.skills" class="content">
+              <span>name</span>
+              <span>Year of Experience: {{ skill.experience }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="covid">
+            <h3 class="title">Covid situation</h3>
+            <div class="content">
+              <h5>how would you prefer to work?</h5>
+              <div class="radio">
+                <input
+                  #inputOffice
+                  type="radio"
+                  value="from_office"
+                  [checked]="
+                    app.work_preference == 'from_office' ? true : false
+                  "
+                  disabled
+                />
+                <label>From Sairme Office</label>
+              </div>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="from_home"
+                  disabled
+                  [checked]="app.work_preference == 'from_home' ? true : false"
+                />
+                <label>From Home</label>
+              </div>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="hybrid"
+                  disabled
+                  [checked]="app.work_preference === 'hybrid' ? true : false"
+                />
+                <label>Hybrid</label>
+              </div>
+            </div>
+            <div class="content">
+              <h5>Did you have covid 19?</h5>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="Yes"
+                  [checked]="app.had_covid ? true : false"
+                  disabled
+                />
+                <label>Yes</label>
+              </div>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="No"
+                  [checked]="app.had_covid ? false : true"
+                  disabled
+                />
+                <label>No</label>
+              </div>
+            </div>
+
+            <div class="content">
+              <h5>When did you have covid 19?</h5>
+              <div class="radio">
+                <input type="date" [value]="app.had_covid_at" disabled />
+              </div>
+            </div>
+
+            <div class="content">
+              <h5>Have you been vaccinated?</h5>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="Yes"
+                  [checked]="app.vaccinated"
+                  disabled
+                />
+                <label>Yes</label>
+              </div>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="No"
+                  [checked]="!app.vaccinated"
+                  disabled
+                />
+                <label>No</label>
+              </div>
+            </div>
+
+            <div class="content">
+              <h5>When did you get covid vaccine?</h5>
+              <div class="radio">
+                <input type="date" [value]="app.vaccinated_at" disabled />
+              </div>
+            </div>
+          </div>
+          <div class="insigts">
+            <h3 class="title">Insigts</h3>
+            <div class="content">
+              <h5>
+                Would you attend Devtalks and maybe also organize your own?
+              </h5>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="Yes"
+                  [checked]="app.will_organize_devtalk"
+                  disabled
+                />
+                <label>Yes</label>
+              </div>
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="No"
+                  [checked]="!app.will_organize_devtalk"
+                  disabled
+                />
+                <label>No</label>
+              </div>
+            </div>
+            <div class="content">
+              <h5>What would you speak about at Devtalk?</h5>
+              <textarea [placeholder]="app.devtalk_topic" disabled></textarea>
+            </div>
+
+            <div class="content">
+              <h5>Tell us somthing special</h5>
+              <textarea
+                [placeholder]="app.something_special"
+                disabled
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

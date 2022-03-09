@@ -14,4 +14,7 @@ export class HomepageComponent implements OnInit {
   startQuestionnaire(): void {
     this.router.navigate(['quiz']);
   }
+  onApplications() {
+    this.router.navigate(['applications']);
+  }
 }

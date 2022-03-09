@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApplicationsComponent } from './applications/applications.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { layoutModule } from './layout/layout.module';
 import { layoutComponent } from './layout/main/layout.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'quiz', component: layoutComponent },
   { path: 'submit', component: SubmitComponent },
   { path: 'thanks', component: ThanksComponent },
+  {path : 'applications', component: ApplicationsComponent},
   // {
   //   path: '',
   //   component: layoutComponent,
