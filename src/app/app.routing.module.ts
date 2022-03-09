@@ -4,11 +4,13 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { layoutModule } from './layout/layout.module';
 import { layoutComponent } from './layout/main/layout.component';
 import { SubmitComponent } from './submit/submit.component';
+import { ThanksComponent } from './thanks/thanks.component';
 
 const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'quiz', component: layoutComponent },
   { path: 'submit', component: SubmitComponent },
+  { path: 'thanks', component: ThanksComponent },
   // {
   //   path: '',
   //   component: layoutComponent,

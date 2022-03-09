@@ -10,6 +10,7 @@ import { SkillsService } from '../skills/skills.service';
 
 import { skillsSubmitArray } from '../skills/skills.service';
 import { personalInterface } from '../personal/personal.service';
+
 //interface for post method
 export interface submitInterface {
   token: string;
@@ -85,9 +86,14 @@ export class SubmitService {
     });
 
     let options = { headers: header };
-    this.http.post(this.url + this.token, data, options).subscribe((d) => {
-      console.log(d);
-    });
+    return this.http.post(this.url + this.token, data, options).subscribe(
+      (d) => {
+        console.log('posted');
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
   }
 
   getPersonalForm() {

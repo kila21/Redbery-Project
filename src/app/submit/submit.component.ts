@@ -16,5 +16,6 @@ export class SubmitComponent {
 
   onSubmitForms() {
     this.submit.postData();
+    this.router.navigate(['thanks']);
   }
 }
