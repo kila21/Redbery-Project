@@ -34,8 +34,8 @@ export class skillsComponent implements OnInit, DoCheck, OnDestroy {
 
     if (localStorage.getItem('skillsForm') !== null) {
       // console.log(this.localStorageForm.first);
-      console.log(this.localStorageForm);
-      this.newSkillsArray = this.localStorageForm;
+      this.skillsService.newSkillsArray = this.localStorageForm;
+      this.newSkillsArray = this.skillsService.newSkillsArray;
     }
   }
 
@@ -51,6 +51,7 @@ export class skillsComponent implements OnInit, DoCheck, OnDestroy {
     console.log('skills Form....');
     console.log(this.skillsService.newSkillsArray);
 
+    console.log('skills number', this.skillsService.getSkillsNumber());
     localStorage.setItem('skillsForm', JSON.stringify(this.newSkillsArray));
   }
 

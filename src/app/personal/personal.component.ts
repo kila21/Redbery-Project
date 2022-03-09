@@ -39,17 +39,21 @@ export class personalComponent implements OnInit, OnDestroy, DoCheck {
         email: this.localStorageForm.email,
         phone: this.localStorageForm.phone,
       });
+
+      this.personalService.personalForm = this.formPersonal.value;
     }
   }
 
   ngDoCheck(): void {
     if (this.formPersonal.valid) {
       this.personalService.personalFormValid = true;
+    } else {
+      this.personalService.personalFormValid = false;
     }
   }
 
   ngOnDestroy(): void {
-    if (this.personalService.clicked && this.formPersonal.valid) {
+    if (this.formPersonal.valid) {
       this.personalService.personalForm = this.formPersonal.value;
     }
 

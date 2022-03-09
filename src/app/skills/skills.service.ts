@@ -13,15 +13,22 @@ export interface newSkill {
   yearOfExperience: string;
 }
 
+interface skillsSubmitArray {
+  id: number;
+  experience: number;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class SkillsService {
   //clicked next page or not
+
   clicked: Boolean = false;
   skillsFormValid: boolean = false;
 
   newSkillsArray: newSkill[] = [];
+
+  arrayForSubmit: skillsSubmitArray[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +49,15 @@ export class SkillsService {
     });
   }
 
-  getLocalStorage() : string| null{
-    return localStorage.getItem('skillsForm')
+  getLocalStorage(): string | null {
+    return localStorage.getItem('skillsForm');
+  }
+
+  //
+  getSkillsNumber() {
+    for (let x of this.newSkillsArray) {
+      let count = 1;
+      this.arrayForSubmit.push({ id: count, experience: +x.yearOfExperience });
+    }
   }
 }

@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovidComponent } from './covid/covid.component';
 import { personalComponent } from './personal/personal.component';
 import { insightsComponent } from './insights/insights.component';
+import { SubmitComponent } from './submit/submit.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { insightsComponent } from './insights/insights.component';
     CovidComponent,
     personalComponent,
     insightsComponent,
+    SubmitComponent,
   ],
   imports: [
     BrowserModule,

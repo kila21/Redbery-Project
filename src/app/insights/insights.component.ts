@@ -28,7 +28,7 @@ export class insightsComponent implements DoCheck, OnDestroy, OnInit {
     this.localStorageForm = JSON.parse(this.localStorageForm);
 
     // store value
-    if (localStorage.getItem('formPersonal') !== null) {
+    if (localStorage.getItem('formInsights') !== null) {
       this.formInsights.patchValue({
         devTalk: this.localStorageForm.devTalk,
         devTalkSpeak: this.localStorageForm.devTalkSpeak,
